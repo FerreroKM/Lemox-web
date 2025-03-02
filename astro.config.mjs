@@ -4,7 +4,6 @@ import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   integrations: [tailwind()],
-  outDir: '/var/www/lemox-web',
   build: {
     format: 'directory',
     inlineStylesheets: 'always'
