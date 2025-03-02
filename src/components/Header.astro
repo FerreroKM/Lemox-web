@@ -1,0 +1,86 @@
+<body class="text-white">
+    <style>
+      .fade-out {
+        opacity: 0;
+        transition: opacity 1s ease-out;
+      }
+      .fade-in {
+        opacity: 1;
+        transition: opacity 1s ease-in;
+      }
+    </style>
+    <div class="relative py-12 isolate">
+      <div
+        class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+        aria-hidden="true"
+      >
+        <div
+          class="relative left-[calc(50%-11rem)] aspect-[1155/878] w-[36.125rem] -translate-x-1/4 rotate-[10deg] bg-gradient-to-tr from-[#4bc130] to-[#8ce47f] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+          style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%);"
+        ></div>
+      </div>
+      <div class="relative max-w-7xl mx-auto px-6 sm:px-12 lg:px-24 pt-20">
+        <div class="overflow-hidden sm:rounded-lg">
+          <div class="mt-20 mx-auto mb-20 text-center">
+            <h1
+              id="main-text"
+              class="mb-4 font-bold text-6xl text-transparent bg-clip-text bg-gradient-to-r from-[#52c731] to-green-500"
+              aria-live="polite"
+            >
+              Secure, fast and reliable
+            </h1>
+            <p class="font-normal text-gray-300 text-2xl mt-6">
+              We offer a variety of KVM and dedicated server solutions to meet your unique needs.<br />
+              Whether it's an entry-level server or a high-end enterprise solution, we offer reliable hardware and attentive customer service.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Verificación segura del elemento
+      const mainText = document.getElementById("main-text")!;
+      
+      // Array de textos
+      const texts = [
+        "Secure, fast and reliable",
+        "Innovative technology for your business",
+        "Performance that inspires",
+        "Excellence in every solution",
+        "Engineered for efficiency"
+      ];
+
+      let currentIndex = 0;
+
+      function changeText() {
+        if (!mainText) return;
+        
+        // Animación de salida
+        mainText.classList.add("fade-out");
+        
+        setTimeout(() => {
+          // Cambio de texto
+          currentIndex = (currentIndex + 1) % texts.length;
+          mainText.textContent = texts[currentIndex];
+          
+          // Animación de entrada sincronizada con el frame
+          requestAnimationFrame(() => {
+            mainText.classList.remove("fade-out");
+            mainText.classList.add("fade-in");
+            
+            setTimeout(() => {
+              mainText.classList.remove("fade-in");
+            }, 1000);
+          });
+        }, 1000);
+      }
+
+      // Iniciar animación solo si el elemento existe
+      if (mainText) {
+        setInterval(changeText, 5000);
+      } else {
+        console.error("Elemento #main-text no encontrado");
+      }
+    </script>
+</body>

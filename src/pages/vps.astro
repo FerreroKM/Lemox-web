@@ -1,0 +1,243 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Header from '../components/Header.astro';
+import Info from '../components/Cards.astro';
+import Footer from '../components/Footer.astro';
+import PanelInfo from '../components/PanelInfo.astro';
+import Faq from '../components/Faq.astro';
+---
+
+<Layout title="Lemox | VPS">
+    <main>
+        <Nav/>
+        <Header/>
+        <div class="relative max-w-7xl mx-auto px-3 pt-10">
+            <h1 class="mb-4 font-bold text-3xl text-white text-center">Our Products</h1>
+            <div class="flex justify-center mb-8">
+                <button id="nlButton" class="px-6 py-3 text-black bg-[#22c55e] border-2 border-white rounded-sm transition-colors duration-300 ease-in-out">Germany VPS Ryzen</button>
+                <button id="deButton" class=" px-6 py-3 text-black bg-white border-2 border-white rounded-sm transition-colors duration-300 ease-in-out">Germany VPS Xeon</button>
+            </div>
+            
+                        
+            <div id="productsContainer" class="grid md:grid-cols-3 sm:grid-cols-1 gap-4">
+            </div>
+        </div>
+        <Info/>
+        <PanelInfo/>
+        <Faq/>
+        <Footer/>
+    </main>
+</Layout>
+
+<script>
+    const nlProducts = [
+    {
+        name: "VPS 1",
+        href: "/",
+        price: "4",
+        features: [
+                        "🇩🇪 Germany, Frankfurt",
+            "1 Ryzen vCores",
+            "2GB DDR4 RAM",
+                        "20GB NVMe",
+                        "AntiDDoS AS203446 + 1 IPv4 + 1 IPv6",
+            "5TB per month",
+            "24/7 Support",
+        ]
+    },
+    {
+        name: "VPS 2",
+        href: "/",
+        price: "6",
+        features: [
+                        "🇩🇪 Germany, Frankfurt",
+            "1 Ryzen vCores",
+            "4GB DDR4 RAM",
+                        "25GB NVMe",
+                        "AntiDDoS AS203446 + 1 IPv4 + 1 IPv6",
+            "10TB per month",
+            "24/7 Support",
+        ]
+    },
+    {
+        name: "VPS 3",
+        href: "/",
+        price: "8",
+        features: [
+                        "🇩🇪 Germany, Frankfurt",
+            "2 Ryzen vCores",
+            "6GB DDR4 RAM",
+                        "50GB NVMe",
+                        "AntiDDoS AS203446 + 1 IPv4 + 1 IPv6",
+            "15TB per month",
+            "24/7 Support",
+        ]
+    },
+    {
+        name: "VPS 4",
+        href: "/",
+        price: "10",
+        features: [
+                        "🇩🇪 Germany, Frankfurt",
+            "2 Ryzen vCores",
+            "8GB DDR4 RAM",
+                        "50GB NVMe",
+                        "AntiDDoS AS203446 + 1 IPv4 + 1 IPv6",
+            "20TB per month",
+            "24/7 Support",
+        ]
+    },
+
+    ];
+
+    const deProducts = [
+    {
+        name: "VPS 1",
+        href: "/",
+        price: "8",
+        features: [
+			"🇩🇪 Germany, Frankfurt",
+            "2 Xeon vCores",
+            "4GB DDR4 RAM",
+			"50GB NVMe",
+			"AntiDDoS AS203446 + 1 IPv4 + 1 IPv6",
+            "4TB per month",
+            "24/7 Support",
+        ]
+    },
+	{
+        name: "VPS 2",
+        href: "/",
+        price: "16",
+        features: [
+			"🇩🇪 Germany, Frankfurt",
+            "6 Xeon vCores",
+            "16GB DDR4 RAM",
+			"100GB NVMe",
+			"AntiDDoS AS203446 + 1 IPv4 + 1 IPv6",
+            "8TB per month",
+            "24/7 Support"
+        ]
+    },
+		{
+        name: "VPS 3",
+        href: "/",
+        price: "32",
+        features: [
+			"🇩🇪 Germany, Frankfurt",
+            "8 Xeon vCores",
+            "32GB DDR4 RAM",
+			"200GB NVMe",
+			"AntiDDoS AS203446 + 1 IPv4 + 1 IPv6",
+            "12TB per month",
+            "24/7 Support"
+        ]
+    },
+	{
+        name: "VPS 4",
+        href: "/",
+        price: "64",
+        features: [
+			"🇩🇪 Germany, Frankfurt",
+            "10 Intel vCores",
+            "64GB DDR4 RAM",
+			"400GB NVMe",
+			"AntiDDoS AS203446 + 1 IPv4 + 1 IPv6",
+            "16TB pero month",
+            "24/7 Support"
+        ]
+    },
+];
+
+    function renderProducts(products: any[]) {
+    const productsContainer = document.getElementById('productsContainer');
+    if (!productsContainer) {
+        console.error('productsContainer element not found');
+        return;
+    }
+    productsContainer.innerHTML = products.map(product => `
+        <div class="w-full max-w-sm p-4 border rounded-lg shadow sm:p-8 mt-5">
+            <h5 class="mb-1 text-xl font-medium">${product.name}</h5>
+            <h5 class="mb-1 text-sm font-thin text-gray-100">Starting at</h5>
+            <div class="flex items-baseline text-gray-100">
+                <span class="text-3xl font-semibold">&euro;</span>
+                <span class="text-5xl font-extrabold tracking-tight">${product.price}</span>
+                <span class="ms-1 text-xl font-normal text-gray-400">/month</span>
+            </div>
+            <ul role="list" class="md:space-y-2 my-4">
+                ${product.features.map((feature: string) => `
+                    <li class="flex items-center">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="white"
+                            aria-hidden="true"
+                            data-slot="icon"
+                            class="h-6 w-5 flex-none text-black"
+                        >
+                            <path
+                                fill-rule="evenodd"
+                                d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
+                                clip-rule="evenodd"
+                            ></path>
+                        </svg>
+                        <span class="text-base font-normal leading-tight text-gray-400 ms-3">
+                            ${feature}
+                        </span>
+                    </li>
+                `).join('')}
+            </ul>
+            <a
+                type="button"
+                class="text-black bg-white hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center"
+                href="${product.href}"
+            >
+                Order
+            </a>
+        </div>
+    `).join('');
+}
+
+function filterProducts(country: string) {
+    const nlButton = document.getElementById('nlButton');
+    const deButton = document.getElementById('deButton');
+
+    if (!nlButton || !deButton) {
+        console.error('nlButton or deButton element not found');
+        return;
+    }
+
+    if (country === 'NL') {
+        renderProducts(nlProducts);
+        nlButton.classList.add('bg-[#22c55e]');
+        nlButton.classList.remove('bg-white');
+        deButton.classList.add('bg-white');
+        deButton.classList.remove('bg-[#22c55e]');
+    } else {
+        renderProducts(deProducts);
+        deButton.classList.add('bg-[#22c55e]');
+        deButton.classList.remove('bg-white');
+        nlButton.classList.add('bg-white');
+        nlButton.classList.remove('bg-[#22c55e]');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const nlButton = document.getElementById('nlButton');
+    const deButton = document.getElementById('deButton');
+
+    if (nlButton) {
+        nlButton.addEventListener('click', () => filterProducts('NL'));
+    } else {
+        console.error('nlButton element not found');
+    }
+
+    if (deButton) {
+        deButton.addEventListener('click', () => filterProducts('DE'));
+    } else {
+        console.error('deButton element not found');
+    }
+
+    filterProducts('NL');
+});
